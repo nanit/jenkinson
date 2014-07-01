@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+$: << 'lib'
+require 'jenkinson'
+
+Jenkinson::CLI.start
