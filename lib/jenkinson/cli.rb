@@ -3,7 +3,7 @@ module Jenkinson
   class CLI < Thor
     desc "set_jobs FROM_FOLDER", "create (or update) jobs from the ./jobs folder"
     def set_jobs(from = nil)
-      Jenkinson::Hub.create_or_update_jobs(Dir["#{from}/*.xml"])
+      Jenkinson::Hub.create_or_update_jobs(from)
     end
 
     desc "get_jobs TARGET_FOLDER", "get jobs configurations"

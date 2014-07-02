@@ -7,10 +7,11 @@ module Jenkinson
       @client = JenkinsApi::Client.new(config)
     end
 
-    def create_or_update_jobs(jobs)
+    def create_or_update_jobs(jobs_folder)
+      jobs = Dir["#{jobs_folder}/*/config.xml"]
       jobs.each do |job|
         File.open(job, "rb") do |xml_file|
-          jobname = File.basename( job, ".*")
+          jobname = job.split('/')[-2]
           client.job.create_or_update(jobname, xml_file.read)
         end
       end
@@ -19,7 +20,7 @@ module Jenkinson
     def get_jobs_config(target_dir)
       client.job.list_all.each do |jobname|
         job_on_server = client.job.get_config(jobname) rescue nil
-        job = "#{target_dir}/#{jobname}.xml"
+        job = "#{target_dir}/#{jobname}/config.xml"
         next if job_on_server.nil?
         File.open(job, "w") do |xml_file|
           xml_file << job_on_server
