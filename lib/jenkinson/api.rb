@@ -22,6 +22,10 @@ module Jenkinson
         job_on_server = client.job.get_config(jobname) rescue nil
         job = "#{target_dir}/#{jobname}/config.xml"
         next if job_on_server.nil?
+
+        dirname = File.dirname(job)
+        Dir.mkdir(dirname) unless Dir.exist?(dirname)
+
         File.open(job, "w") do |xml_file|
           xml_file << job_on_server
         end
