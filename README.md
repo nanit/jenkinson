@@ -1,6 +1,12 @@
 # Jenkinson
 
-TODO: Write a gem description
+This gem allows running most common operations on remote jenkins server 
+
+Currently supports:  
+
+- Backup of jobs (get_jobs) 
+- Restore local jobs to server (set_jobs) 
+- Install jenkins plugins (install) 
 
 ## Installation
 
@@ -18,10 +24,13 @@ Or install it yourself as:
 
 ## Usage
 
-`jenkinson get_jobs TARGET_FOLDER # download jobs configuration into target_dir (config/jobs)`
-`jenkinson help [COMMAND]  # Describe available commands or one specific command`
-`jenkinson install PLUGINS # install jenkins plugins (comma seperated)`
-`jenkinson set_jobs FROM_FOLDER  # create (or update) jobs from specified folder (config/jobs)`
+`jenkinson get_jobs TARGET_FOLDER # download jobs configuration into target_dir (config/jobs)`  
+
+`jenkinson help [COMMAND]  # Describe available commands or one specific command`  
+
+`jenkinson install PLUGINS # install jenkins plugins (comma seperated)`  
+
+`jenkinson set_jobs FROM_FOLDER  # create (or update) jobs from specified folder (config/jobs)`  
 
 ## Contributing
 
